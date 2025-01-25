@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Countdown</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('C:\\Users\\Akshit\\Desktop\\\website_pics\\mountain_wed.jpg'); /* Replace with your image path */
+            background-size: cover; /* Ensures the image covers the whole page */
+            background-position: center; /* Centers the image */
+            background-attachment: fixed; /* Keeps the image fixed while scrolling */
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Stylish Heading Font - Tangerine */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Tangerine', cursive; /* Use Tangerine font for headings */
+            color: #6A2D92; /* Royal Purple color */
+        }
+
+        section h2, section h3 {
+            font-family: 'Tangerine', cursive;  /* Use Tangerine font for subheadings */
+            font-size: 2em;  /* Adjust size if needed */
+            color: #6A2D92;  /* Royal Purple color */
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Slide In Animation */
+        @keyframes slideIn {
+            0% { transform: translateX(100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Global styles for sections with animation */
+        section {
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: slideIn 1s ease-out;
+        }
+
+        /* Header Content Wrapper */
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Styling for the Illustration */
+        .header-illustration {
+            width: 150px;  /* Adjust the size of the illustration */
+            margin-bottom: 10px;  /* Space between illustration and heading */
+            animation: fadeIn 1.5s ease-out;  /* Optional: Animation */
+        }
+
+        header h1 {
+            color: #6A2D92; /* Royal Purple */
+            font-size: 4.5em;
+            margin-bottom: 1px;
+        }
+
+        @media (max-width: 768px) {
+            /* Make the illustration smaller on smaller screens */
+            .header-illustration {
+                width: 100px;  /* Adjust width for mobile view */
+            }
+        }
+        /* Countdown Section */
+        section.countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 50px;
+            margin: 50px 0;
+            animation: slideIn 1s ease-out;
+        }
+
+        .countdown-item {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            padding: 20px 30px; /* Decreased padding */
+            width: 120px; /* Adjust width to fit smaller numbers */
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-out;
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            justify-content: center;
+            align-items: center; /* Centers content horizontally and vertically */
+        }
+
+        .countdown-item h2 {
+            color: #6A2D92;
+            font-size: 2.8em; /* Reduced font size */
+            margin-bottom: 10px; /* Add some space between label and number */
+        }
+
+        .countdown-item p {
+            font-size: 2.5em; /* Smaller number size */
+            color: #FFD700; /* Gold */
+            font-weight: bold;
+            margin: 0; /* Remove margin to center better */
+        }
+
+        /* Swimlane Event Timeline Section */
+        section.timeline {
+            position: relative;
+            padding: 50px 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            margin: 50px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        section.timeline h2 {
+            color: #6A2D92;
+            font-size: 3.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Timeline Container */
+        .timeline-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding: 40px 0;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+
+        /* Timeline Line */
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #6A2D92;
+            z-index: -2;
+        }
+
+        /* Event Bubbles */
+        .timeline-bubble {
+            position: relative;
+            display: inline-block;
+            width: 100px; /* Reduced size */
+            height: 100px; /* Reduced size */
+            border-radius: 50%;
+            background-color: #6A2D92;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 15px; /* Space between events */
+        }
+
+        .timeline-bubble img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block; /* Ensures image fills the bubble */
+        }
+
+        /* Zoom Effect on Hover */
+        .timeline-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Event Details */
+        .timeline-item {
+            text-align: center;
+            width: 120px;
+            margin-top: 10px;
+        }
+
+        .timeline-item h3 {
+            font-family: 'Roboto';
+            font-size: 0.6em;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item p {
+            font-family: 'Tangerine', cursive;
+            font-size: 1.5em;
+            color: #FFD700;
+        }
+
+        /* Gallery Section */
+        section.gallery {
+            padding: 50px 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            margin: 50px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+            margin: 50px auto;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        section.gallery h2 {
+            color: #6A2D92;
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        section.gallery img {
+            width: 80%;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        section.gallery img:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        /* Map Section */
+        section.map {
+            padding: 50px 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            margin: 50px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+            font-size: 1.8em;
+            text-align: center;
+            margin: 50px auto;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Google Map */
+        .google-map {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #6A2D92;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            animation: slideIn 1s ease-out;
+        }
+
+        footer a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em; /* Reduce the header font size for smaller screens */
+            }
+        
+            .countdown-item {
+                width: 90px; /* Make countdown items smaller */
+                padding: 15px 20px; /* Adjust padding for smaller screens */
+            }
+        
+            .countdown-item h2 {
+                font-size: 1.5em; /* Adjust label size */
+            }
+        
+            .countdown-item p {
+                font-size: 2em; /* Adjust the countdown number size */
+            }
+        
+            .timeline-item {
+                width: 100%; /* Make timeline items take full width */
+                margin-bottom: 20px; /* Add spacing between events */
+            }
+        
+            .timeline-bubble {
+                width: 80px; /* Make event bubbles smaller */
+                height: 80px;
+            }
+        
+            section.gallery img {
+                width: 100%; /* Make images take full width for better mobile layout */
+                height: auto;
+            }
+        
+            .google-map {
+                height: 300px; /* Reduce map height on smaller screens */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Header with Wedding Title and Illustration -->
+<header>
+    <div class="header-content">
+        <h1>Your Wedding Day</h1>
+        <img src="C:\\Users\\Akshit\\Desktop\\\website_pics\\rings1.png" alt="Wedding Illustration" class="header-illustration">
+    </div>
+</header>
+
+
+<!-- Countdown Section -->
+<section class="countdown">
+    <div class="countdown-item" id="days">
+        <h2>Days</h2>
+        <p id="days-number">0</p>
+    </div>
+    <div class="countdown-item" id="hours">
+        <h2>Hours</h2>
+        <p id="hours-number">0</p>
+    </div>
+    <div class="countdown-item" id="minutes">
+        <h2>Minutes</h2>
+        <p id="minutes-number">0</p>
+    </div>
+    <div class="countdown-item" id="seconds">
+        <h2>Seconds</h2>
+        <p id="seconds-number">0</p>
+    </div>
+</section>
+
+<!-- Event Timeline Section -->
+<section class="timeline">
+    <h2>Event Timeline</h2>
+
+    <!-- Timeline Container -->
+    <div class="timeline-container">
+        <!-- Event 1: Baan & Haldi -->
+        <div class="timeline-item">
+            <h3>Fri 14th Feb - 8:00 AM</h3> <!-- Date and Time before Event Name -->
+            <div class="timeline-bubble">
+                <img src="C:\\Users\\Akshit\\Desktop\\20240904_182939.jpg" alt="Baan & Haldi"> <!-- Replace with your image -->
+            </div>
+            <p>Baan & Haldi</p>
+        </div>
+
+        <!-- Event 2: Ceremony -->
+        <div class="timeline-item">
+            <h3>Sat 15th Feb - 5:00 PM</h3> <!-- Date and Time before Event Name -->
+            <div class="timeline-bubble">
+                <img src="C:\\Users\\Akshit\\Desktop\\20240904_182939.jpg" alt="Ceremony Begins"> <!-- Replace with your image -->
+            </div>
+            <p>Ceremony Begins</p>
+        </div>
+
+        <!-- Event 3: Reception -->
+        <div class="timeline-item">
+            <h3>Sat 15th Feb - 6:30 PM</h3> <!-- Date and Time before Event Name -->
+            <div class="timeline-bubble">
+                <img src="C:\\Users\\Akshit\\Desktop\\20240904_182939.jpg" alt="Reception Dinner"> <!-- Replace with your image -->
+            </div>
+            <p>Reception Dinner</p>
+        </div>
+
+        <!-- Event 4: Dance Party -->
+        <div class="timeline-item">
+            <h3>Sat 15th Feb - 8:00 PM</h3> <!-- Date and Time before Event Name -->
+            <div class="timeline-bubble">
+                <img src="C:\\Users\\Akshit\\Desktop\\20240904_182939.jpg" alt="Dance Party"> <!-- Replace with your image -->
+            </div>
+            <p>Dance Party</p>
+        </div>
+    </div>
+
+    <!-- Timeline Line -->
+    <div class="timeline-line"></div>
+
+</section>
+
+<!-- Gallery Section -->
+<section class="gallery">
+    <h2>Photo Gallery</h2>
+    <div>
+        <img src="image1.jpg" alt="Engagement Photo 1"> <!-- Replace with your own image -->
+        <img src="image2.jpg" alt="Engagement Photo 2"> <!-- Replace with your own image -->
+        <img src="image3.jpg" alt="Engagement Photo 3"> <!-- Replace with your own image -->
+    </div>
+</section>
+
+<!-- Navigation Map Section -->
+<section class="map">
+    <h2>Venue Location</h2>
+    <div>
+        <!-- Google Maps Embed -->
+        <iframe class="google-map" 
+            src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=Wedding+Venue+Address" 
+            allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
+<!-- Footer with Contact/RSVP Link -->
+<footer>
+    <p>For more details or to RSVP, <a href="mailto:youremail@example.com">Contact Us</a></p>
+</footer>
+
+<script>
+// Countdown Timer
+const weddingDate = new Date("2025-06-15T00:00:00").getTime(); // Set your wedding date here
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const timeLeft = weddingDate - now;
+
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    document.getElementById("days-number").innerText = days;
+    document.getElementById("hours-number").innerText = hours;
+    document.getElementById("minutes-number").innerText = minutes;
+    document.getElementById("seconds-number").innerText = seconds;
+
+    if (timeLeft < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById("days-number").innerText = "0";
+        document.getElementById("hours-number").innerText = "0";
+        document.getElementById("minutes-number").innerText = "0";
+        document.getElementById("seconds-number").innerText = "0";
+    }
+}
+
+const countdownInterval = setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
+
+C:\\Users\\Akshit\\Desktop\\20240904_182939.jpg
