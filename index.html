@@ -282,6 +282,12 @@
             animation: fadeIn 1.5s ease-out;
         }
 
+        section.map iframe {
+            width: 100%; /* Make the iframe fill the container */
+            height: 400px; /* Default height for desktop */
+            border-radius: 10px;
+        }
+
         /* Google Map */
         section.map .google-map {
             width: 100%;
@@ -362,6 +368,10 @@
             
             section.map .google-map {
                 height: 300px; /* Reduce map height on smaller screens */
+            }
+
+            section.map iframe {
+                height: 300px; /* Reduce height on mobile for better fitting */
             }
         }
 
