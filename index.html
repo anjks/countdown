@@ -168,15 +168,13 @@
 
         /* Timeline Container */
         .timeline-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             position: relative;
             padding: 40px 0;
             align-items: center;
-            flex-wrap: nowrap;
+            flex-wrap: wrap; /* Allows the bubbles to wrap on smaller screens */
+            margin: 0 10px; /* Prevents container from overflowing */
         }
 
         /* Timeline Line */
@@ -194,14 +192,14 @@
         .timeline-bubble {
             position: relative;
             display: inline-block;
-            width: 100px; /* Reduced size */
-            height: 100px; /* Reduced size */
+            width: 100px; /* Standard bubble size */
+            height: 100px; /* Standard bubble size */
             border-radius: 50%;
             background-color: #6A2D92;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin: 0 15px; /* Space between events */
+            margin: 0 15px;
         }
 
         .timeline-bubble img {
@@ -328,13 +326,33 @@
             }
         
             .timeline-item {
-                width: 100%; /* Make timeline items take full width */
-                margin-bottom: 20px; /* Add spacing between events */
+                text-align: center;
+                width: 100%; /* Allow items to take full width */
+                margin-top: 10px;
+                margin-bottom: 30px; /* Add spacing between timeline items */
+            }
+
+            .timeline-container {
+                flex-direction: column; /* Stack timeline items vertically */
+                align-items: center; /* Center timeline items */
+                padding: 20px 0;
             }
         
             .timeline-bubble {
                 width: 80px; /* Make event bubbles smaller */
                 height: 80px;
+                margin: 10px 0; /* Add vertical spacing */
+            }
+
+            .timeline-line {
+                position: absolute;
+                top: 50%;
+                left: 10px;
+                right: 10px;
+                height: 2px;
+                background-color: #6A2D92;
+                z-index: -2;
+                width: auto; /* Ensure line is not too wide */
             }
         
             section.gallery img {
