@@ -80,13 +80,13 @@
         /* Stylish Heading Font - Tangerine */
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Tangerine', cursive; /* Use Tangerine font for headings */
-            color: #6A2D92; /* Royal Purple color */
+            color: #831515; /* Royal Purple color */
         }
 
         section h2, section h3 {
             font-family: 'Tangerine', cursive;  /* Use Tangerine font for subheadings */
             font-size: 2em;  /* Adjust size if needed */
-            color: #6A2D92;  /* Royal Purple color */
+            color: #831515;  /* Royal Purple color */
         }
 
         /* Fade In Animation */
@@ -151,7 +151,7 @@
         }
 
         header h1 {
-            color: #6A2D92; /* Royal Purple */
+            color: #831515; /* Royal Purple */
             font-size: 4.5em;
             margin-bottom: 1px;
         }
@@ -187,7 +187,7 @@
         }
 
         .countdown-item h2 {
-            color: #6A2D92;
+            color: #831515;
             font-size: 2.8em; /* Reduced font size */
             margin-bottom: 10px; /* Add some space between label and number */
         }
@@ -212,7 +212,7 @@
         }
 
         section.timeline h2 {
-            color: #6A2D92;
+            color: #831515;
             font-size: 3.5em;
             text-align: center;
             margin-bottom: 30px;
@@ -236,7 +236,7 @@
             left: 0;
             right: 0;
             height: 2px;
-            background-color: #6A2D92;
+            background-color: #831515;
             z-index: -2;
         }
 
@@ -247,7 +247,7 @@
             width: 100px; /* Standard bubble size */
             height: 100px; /* Standard bubble size */
             border-radius: 50%;
-            background-color: #6A2D92;
+            background-color: #831515;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -300,7 +300,7 @@
         }
 
         section.gallery h2 {
-            color: #6A2D92;
+            color: #831515;
             font-size: 3.5em;
             margin-bottom: 30px;
             text-align: center;
@@ -347,6 +347,10 @@
             margin: auto;
             display: block;
             max-height: 80vh; /* Prevent image from exceeding screen height */
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            min-height: 100vh;
         }
 
         /* Caption for the image */
@@ -403,7 +407,7 @@
 
         /* Footer Section */
         footer {
-            background-color: #6A2D92;
+            background-color: rgba(0, 0, 0, 0.6);;
             color: white;
             text-align: center;
             padding: 20px 0;
@@ -470,7 +474,7 @@
                 left: 10px;
                 right: 10px;
                 height: 2px;
-                background-color: #6A2D92;
+                background-color: #831515;
                 z-index: -2;
                 width: auto; /* Ensure line is not too wide */
             }
@@ -564,14 +568,14 @@
 <section class="gallery">
     <h2>Photo Gallery</h2>
     <div>
-        <img src="website_pics/AkshitnAnjali_thumb.jpeg"  data-src="website_pics/AkshitnAnjali.jpeg"> <!-- Replace with your own image -->
-        <img src="website_pics/DSC03593_thumb.JPG"  data-src="website_pics/DSC03593.JPG"> <!-- Replace with your own image -->
-        <img src="website_pics/DSC03365_thumb.JPG"  data-src="website_pics/DSC03365.JPG"> <!-- Replace with your own image -->
-        <img src="website_pics/DSC01033_thumb.JPG"  data-src="website_pics/DSC01033.JPG"> <!-- Replace with your own image -->
-        <img src="website_pics/DSC01348_thumb.JPG"  data-src="website_pics/DSC01348.JPG"> <!-- Replace with your own image -->
-        <img src="website_pics/DSC05684_thumb.JPG"  data-src="website_pics/DSC05684.JPG"> <!-- Replace with your own image -->
-        <img src="website_pics/DSC00912_thumb.JPG"  data-src="website_pics/DSC00912.JPG"> <!-- Replace with your own image -->
-        <img src="website_pics/DSC01304_thumb.JPG"  data-src="website_pics/DSC01304.JPG"> <!-- Replace with your own image -->
+        <img src="website_pics/AkshitnAnjali_thumb.jpeg" data-src="website_pics/AkshitnAnjali.jpeg"> <!-- Replace with your own image -->
+        <img src="website_pics/DSC03593_thumb.JPG" data-src="website_pics/DSC03593.JPG"> <!-- Replace with your own image -->
+        <img src="website_pics/DSC03365_thumb.JPG" data-src="website_pics/DSC03365.JPG"> <!-- Replace with your own image -->
+        <img src="website_pics/DSC01033_thumb.JPG" data-src="website_pics/DSC01033.JPG"> <!-- Replace with your own image -->
+        <img src="website_pics/DSC01348_thumb.JPG" data-src="website_pics/DSC01348.JPG"> <!-- Replace with your own image -->
+        <img src="website_pics/DSC05684_thumb.JPG" data-src="website_pics/DSC05684.JPG"> <!-- Replace with your own image -->
+        <img src="website_pics/DSC00912_thumb.JPG" data-src="website_pics/DSC00912.JPG"> <!-- Replace with your own image -->
+        <img src="website_pics/DSC01304_thumb.JPG" data-src="website_pics/DSC01304.JPG"> <!-- Replace with your own image -->
     </div>
 </section>
 <!-- Modal/Popup for displaying the larger image -->
@@ -592,7 +596,8 @@
 </section>
 <!-- Footer with Contact/RSVP Link -->
 <footer>
-    <p>For more details or to RSVP, <a href="mailto:youremail@example.com">Contact Us</a></p>
+    <p>For more details or to RSVP, Contact Us:</p>
+    <p>+91-9927616692</p>
 </footer>
 <script>
 // Countdown Timer
