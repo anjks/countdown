@@ -200,6 +200,23 @@
             margin: 0; /* Remove margin to center better */
         }
 
+        section.countdown-section-message {
+            display: none;
+            justify-content: center;
+            gap: 20px;
+            width: auto;
+            padding: 50px;
+            margin: 50px 0;
+            animation: slideIn 1s ease-out;
+        }
+
+        .countdown-section-item p {
+            font-size: 2.5em; /* Smaller number size */
+            color: #FFFFFF; /* Gold */
+            font-weight: bold;
+            margin: 0; /* Remove margin to center better */
+        }
+
         /* Swimlane Event Timeline Section */
         section.timeline {
             position: relative;
@@ -524,6 +541,14 @@
         <p id="seconds-number">0</p>
     </div>
 </section>
+
+<!-- Countdown Message -->
+ <section class="countdown-section-message">
+    <div class="countdown-section-item" id="message">
+        <p id="countdown-message"></p>
+    </div>
+ </section>
+
 <!-- Event Timeline Section -->
 <section class="timeline">
     <h2>Event Timeline</h2>
@@ -607,6 +632,7 @@ const weddingDate = new Date("2025-02-15T20:30:00").getTime(); // Set your weddi
 function updateCountdown() {
     const now = new Date().getTime();
     const timeLeft = weddingDate - now;
+    //console.log(timeLeft);
 
     const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
     const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -618,12 +644,15 @@ function updateCountdown() {
     document.getElementById("minutes-number").innerText = minutes;
     document.getElementById("seconds-number").innerText = seconds;
 
-    if (timeLeft < 0) {
+    if (timeLeft < 0 || isNaN(timeLeft)) {
+        //console.log("inside if")
         clearInterval(countdownInterval);
         document.getElementById("days-number").innerText = "0";
         document.getElementById("hours-number").innerText = "0";
         document.getElementById("minutes-number").innerText = "0";
         document.getElementById("seconds-number").innerText = "0";
+        document.querySelector('.countdown-section-message').style.display = 'flex';
+        document.getElementById("countdown-message").textContent = "The Wedding has arrived!";
     }
 }
 const countdownInterval = setInterval(updateCountdown, 1000);
